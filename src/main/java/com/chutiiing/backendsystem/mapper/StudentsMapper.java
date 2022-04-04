@@ -17,10 +17,10 @@ public interface StudentsMapper {
             "#{password}, #{sex}, #{academy}, #{major}, #{grade})")
     int insert(Students students);
 
-//    //更新
-//    @Update("update students set sno = #{sno}, name = #{name}, sex = #{sex}, academy = #{academy}, " +
-//            "major = #{major}, grade = #{grade} where sno = #{sno}")
-//    int update(Students students);
+    //更新
+    @Update("update students set sno = #{sno}, name = #{name}, sex = #{sex}, academy = #{academy}, " +
+            "major = #{major}, grade = #{grade} where sno = #{sno}")
+    int update(Students students);
 
     //删除
     @Delete("delete from students where sno = #{sno}")

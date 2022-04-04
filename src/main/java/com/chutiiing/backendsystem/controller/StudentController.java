@@ -26,11 +26,11 @@ public class StudentController {
         return studentsMapper.insert(students);
     }
 
-//    //更新某一行
-//    @PostMapping
-//    public Integer Update(@RequestBody Students students) {
-//        return studentsMapper.update(students);
-//    }
+    //更新某一行
+    @PostMapping("/update")
+    public Integer Update(@RequestBody Students students) {
+        return studentsMapper.update(students);
+    }
 
     //删除某一行
     @DeleteMapping("/{sno}")
