@@ -42,15 +42,26 @@ public class StudentController {
     }
 
     // 分页查询
-    // 接口路径：/students/page?pageNum=1&pageSize=10
+    // 接口路径：/students/page?pageNum=1&pageSize=10&sno=221801438
     // @RequestParam接受
     // limit第一个参数 = (pageNum - 1) * pageSize
     // limit第二个参数 = pageSize
     @GetMapping("/page")
-    public Map<String,Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+    public Map<String,Object> findPage(@RequestParam Integer pageNum,
+                                       @RequestParam Integer pageSize,
+                                       @RequestParam String sno,
+                                       @RequestParam String name,
+                                       @RequestParam String major,
+                                       @RequestParam String grade,
+                                       @RequestParam String state) {
         pageNum = (pageNum - 1) * pageSize;
-        List<Students> data = studentsMapper.selectPage(pageNum,pageSize);
-        Integer total = studentsMapper.selectTotalNum();
+        sno  = "%" + sno + "%";    //学号模糊查询
+        name  = "%" + name + "%";    //姓名模糊查询
+        major  = "%" + major + "%";    //专业模糊查询
+        grade  = "%" + grade + "%";    //年级模糊查询
+        state  = "%" + state + "%";    //心理状态模糊查询
+        List<Students> data = studentsMapper.selectPage(pageNum,pageSize,sno,name,major,grade,state);
+        Integer total = studentsMapper.selectTotalNum(sno,name,major,grade,state);
         Map<String,Object> res = new HashMap<>();
         res.put("total",total);
         res.put("data",data);

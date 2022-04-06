@@ -12,6 +12,18 @@ public interface StudentsMapper {
     @Select("select * from students")
     List<Students> findAll();
 
+    //分页查询
+    @Select("select * from students where sno like #{sno} and name like #{name} and major like #{major}" +
+            "and grade like #{grade} and state like #{state} limit #{pageNum}, #{pageSize}")
+    List<Students> selectPage(Integer pageNum, Integer pageSize, String sno, String name,
+                              String major, String grade, String state);
+
+    //查询总条数
+    @Select("select count(*) from students where sno like #{sno} and name like #{name} and major like #{major}" +
+            "and grade like #{grade} and state like #{state}")
+    Integer selectTotalNum(String sno, String name,
+                           String major, String grade, String state);
+
     //插入
     @Insert("INSERT into students(sno, name, password, sex, academy, major, grade,state) VALUES (#{sno}, #{name}," +
             "#{password}, #{sex}, #{academy}, #{major}, #{grade}), #{state}")
@@ -26,11 +38,5 @@ public interface StudentsMapper {
     @Delete("delete from students where sno = #{sno}")
     Integer deleteBySno(@Param("sno") String sno);
 
-    //分页查询
-    @Select("select * from students limit #{pageNum}, #{pageSize}")
-    List<Students> selectPage(Integer pageNum, Integer pageSize);
 
-    //查询总条数
-    @Select("select count(*) from students")
-    Integer selectTotalNum();
 }
