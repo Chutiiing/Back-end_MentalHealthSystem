@@ -1,12 +1,13 @@
 package com.chutiiing.backendsystem.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.chutiiing.backendsystem.entity.Students;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
-public interface StudentsMapper {
+public interface StudentsMapper extends BaseMapper<Students> {
 
     //查询
     @Select("select * from students")
@@ -27,7 +28,7 @@ public interface StudentsMapper {
     //插入
     @Insert("INSERT into students(sno, name, password, sex, academy, " +
             "major, grade, state) VALUES (#{sno}, #{name}, #{password}, #{sex}, #{academy}, #{major}, #{grade}, #{state})")
-    Integer insert(Students students);
+    int insert(Students students);
 
     //更新
     @Update("update students set sno = #{sno}, name = #{name}, password = #{password}, sex = #{sex}, academy = #{academy}, " +

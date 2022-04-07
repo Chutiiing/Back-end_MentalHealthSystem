@@ -2,6 +2,7 @@ package com.chutiiing.backendsystem.controller;
 
 import com.chutiiing.backendsystem.entity.Students;
 import com.chutiiing.backendsystem.mapper.StudentsMapper;
+import com.chutiiing.backendsystem.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,8 @@ public class StudentController {
 
     @Autowired
     private StudentsMapper studentsMapper;
+    @Autowired
+    private StudentService studentService;
 
     //查询全部数据
     @GetMapping
@@ -37,6 +40,12 @@ public class StudentController {
     @DeleteMapping("/del/{sno}")
     public Integer delete(@PathVariable String sno){
         return studentsMapper.deleteBySno(sno);
+    }
+
+    //批量删除
+    @PostMapping("/batch")
+    public boolean deleteBatch(@RequestBody List<String> snos){
+        return studentService.removeByIds(snos);
     }
 
     // 分页查询
