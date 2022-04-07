@@ -25,17 +25,17 @@ public interface StudentsMapper {
                            String major, String grade, String state);
 
     //插入
-    @Insert("INSERT into students(sno, name, password, sex, academy, major, grade, state) VALUES (#{sno}, #{name}, #{password}, #{sex}, #{academy}, #{major}, #{grade}, #{state})")
+    @Insert("INSERT into students(sno, name, password, sex, academy, " +
+            "major, grade, state) VALUES (#{sno}, #{name}, #{password}, #{sex}, #{academy}, #{major}, #{grade}, #{state})")
     Integer insert(Students students);
 
     //更新
-    @Update("update students set sno = #{sno}, name = #{name}, sex = #{sex}, academy = #{academy}, " +
+    @Update("update students set sno = #{sno}, name = #{name}, password = #{password}, sex = #{sex}, academy = #{academy}, " +
             "major = #{major}, grade = #{grade}, state = #{state} where sno = #{sno}")
     Integer update(Students students);
 
     //删除
     @Delete("delete from students where sno = #{sno}")
     Integer deleteBySno(@Param("sno") String sno);
-
 
 }

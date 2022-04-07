@@ -31,12 +31,10 @@ public class StudentController {
 
     //更新某一行
     @PostMapping("/update")
-    public Integer Update(@RequestBody Students students) {
-        return studentsMapper.update(students);
-    }
+    public Integer Update(@RequestBody Students students) { return studentsMapper.update(students); }
 
     //删除某一行
-    @DeleteMapping("/{sno}")
+    @DeleteMapping("/del/{sno}")
     public Integer delete(@PathVariable String sno){
         return studentsMapper.deleteBySno(sno);
     }
