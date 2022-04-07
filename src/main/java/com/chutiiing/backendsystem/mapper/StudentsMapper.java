@@ -25,8 +25,7 @@ public interface StudentsMapper {
                            String major, String grade, String state);
 
     //插入
-    @Insert("INSERT into students(sno, name, password, sex, academy, major, grade,state) VALUES (#{sno}, #{name}," +
-            "#{password}, #{sex}, #{academy}, #{major}, #{grade}), #{state}")
+    @Insert("INSERT into students(sno, name, password, sex, academy, major, grade, state) VALUES (#{sno}, #{name}, #{password}, #{sex}, #{academy}, #{major}, #{grade}, #{state})")
     Integer insert(Students students);
 
     //更新
