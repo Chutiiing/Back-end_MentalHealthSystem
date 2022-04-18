@@ -42,7 +42,7 @@ public class StudentController {
         return studentsMapper.deleteBySno(sno);
     }
 
-    //批量删除
+    //批量删除（My-Batis plus)
     @PostMapping("/batch")
     public boolean deleteBatch(@RequestBody List<String> snos){
         return studentService.removeByIds(snos);
