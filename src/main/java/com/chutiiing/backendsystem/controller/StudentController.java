@@ -27,6 +27,7 @@ public class StudentController {
 
     //插入数据
     //外部传入的student对象作为参数
+    //"RequestBody"可以把前端传来的jason数据转换成java对象
     @PostMapping("/insert")
     public Integer insert(@RequestBody Students students) {
         return studentsMapper.insert(students);
