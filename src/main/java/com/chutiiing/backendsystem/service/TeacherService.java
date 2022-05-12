@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TeacherService extends ServiceImpl<TeacherMapper, Teacher> {
+
+    //判断用户名密码是否正确
     public boolean login(Teacher teacher) {
         QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("username",teacher.getUsername());
@@ -16,4 +18,5 @@ public class TeacherService extends ServiceImpl<TeacherMapper, Teacher> {
         Teacher temp = getOne(queryWrapper);
         return temp != null;
     }
+
 }
