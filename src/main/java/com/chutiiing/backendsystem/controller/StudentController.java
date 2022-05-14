@@ -27,6 +27,12 @@ public class StudentController {
         return studentsMapper.findAll();
     }
 
+    //按学号查询
+    @GetMapping("/search/{sno}")
+    public Students findBySno(@PathVariable String sno){
+        return studentsMapper.findBySno(sno);
+    }
+
     //查询总人数
     @GetMapping("/stuCount")
     public Map<String,Object> studentNumTotal() {

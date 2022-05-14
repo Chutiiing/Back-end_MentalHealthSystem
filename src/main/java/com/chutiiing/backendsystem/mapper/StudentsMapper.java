@@ -14,6 +14,10 @@ public interface StudentsMapper extends BaseMapper<Students> {
     @Select("select * from students")
     List<Students> findAll();
 
+    //按学号查询
+    @Select("select * from students where sno = #{sno}")
+    Students findBySno(String sno);
+
     //分页查询
     @Select("select * from students where sno like #{sno} and name like #{name} and academy like #{academy}" +
             "and grade like #{grade} and state like #{state} limit #{pageNum}, #{pageSize}")
