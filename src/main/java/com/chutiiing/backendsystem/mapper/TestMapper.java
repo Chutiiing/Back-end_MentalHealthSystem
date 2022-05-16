@@ -2,10 +2,8 @@ package com.chutiiing.backendsystem.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.chutiiing.backendsystem.entity.Test;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import com.chutiiing.backendsystem.entity.TestName;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -26,4 +24,13 @@ public interface TestMapper extends BaseMapper<Test> {
     //删除
     @Delete("delete from test_name where tableid = #{tableid}")
     Integer deleteById(@Param("tableid") String tableid);
+
+    //插入
+    @Insert("INSERT into test_name(tableid, title, introduction, admin ) VALUES (#{tableid},#{title}, #{introduction},#{admin})")
+    int insert(Test test);
+
+    //查询已有的量表title
+    @Select("select title from test_name")
+    List<TestName> findName();
+
 }
