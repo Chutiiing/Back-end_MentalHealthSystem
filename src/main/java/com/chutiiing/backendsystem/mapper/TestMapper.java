@@ -9,9 +9,8 @@ import java.util.List;
 
 @Mapper
 public interface TestMapper extends BaseMapper<Test> {
-    //查询
-    @Select("select * from test_name")
-    List<Test> findAll();
+
+    /////////////////////////////////教师端/////////////////////////////////////////////
 
     //分页查询
     @Select("select * from test_name where title like #{title} limit #{pageNum}, #{pageSize}")
@@ -32,5 +31,11 @@ public interface TestMapper extends BaseMapper<Test> {
     //查询已有的量表title
     @Select("select title from test_name")
     List<TestName> findName();
+
+    //////////////////////////////////学生端/////////////////////////////////
+
+    //查询
+    @Select("select * from test_name")
+    List<Test> findAll();
 
 }

@@ -1,6 +1,7 @@
 package com.chutiiing.backendsystem.controller;
 
 import com.chutiiing.backendsystem.entity.Booking;
+import com.chutiiing.backendsystem.entity.StuBooking;
 import com.chutiiing.backendsystem.mapper.BookingMapper;
 import com.chutiiing.backendsystem.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class BookingController {
     private BookingMapper bookingMapper;
     @Autowired
     private BookingService bookingService;
+
+    /////////////////////////////////教师端接口/////////////////////////////////////////
 
     //分页查询
     @GetMapping("/page")
@@ -57,5 +60,13 @@ public class BookingController {
     @PostMapping("/insert")
     public Integer insert(@RequestBody Booking booking) {
         return bookingMapper.insert(booking);
+    }
+
+    /////////////////////////////////学生端接口/////////////////////////////////////////
+
+    //查询预约信息
+    @GetMapping("/findBooking")
+    public List<StuBooking> findBooking(){
+        return bookingMapper.findBooking();
     }
 }

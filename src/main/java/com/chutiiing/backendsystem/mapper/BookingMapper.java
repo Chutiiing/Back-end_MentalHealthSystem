@@ -2,12 +2,15 @@ package com.chutiiing.backendsystem.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.chutiiing.backendsystem.entity.Booking;
+import com.chutiiing.backendsystem.entity.StuBooking;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface BookingMapper extends BaseMapper<Booking> {
+
+    ///////////////教师端//////////////////////////////
 
     //分页查询
     @Select("select booking.id,booking.time,booking.sno,booking.isbooking,booking.tno,teacher.room from booking,teacher " +
@@ -33,4 +36,10 @@ public interface BookingMapper extends BaseMapper<Booking> {
     //插入
     @Insert("INSERT into booking(time, tno, isbooking, sno) VALUES (#{time}, #{tno}, #{isbooking}, #{sno})")
     int insert(Booking booking);
+
+    /////////////////学生端/////////////////////////////
+    //学生端查询预约信息
+    @Select("select teacher.username,booking.time,teacher.introduction,teacher.phone,teacher.room from booking,teacher " +
+            "where booking.tno = teacher.tno and booking.isbooking = \"未预约\"")
+    List<StuBooking> findBooking();
 }
