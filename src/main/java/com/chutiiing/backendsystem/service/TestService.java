@@ -12,9 +12,8 @@ public class TestService extends ServiceImpl<TestMapper, Test> {
     //返回true表示已经存在
     public boolean testExists(Test test) {
         QueryWrapper<Test> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("title",test.getTitle());
+        queryWrapper.eq("tableid",test.getTableid());
         Test temp = getOne(queryWrapper);
-        System.out.println(temp);
         return temp != null;
     }
 }
