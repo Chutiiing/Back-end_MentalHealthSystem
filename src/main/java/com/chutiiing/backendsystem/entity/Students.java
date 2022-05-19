@@ -14,6 +14,6 @@ public class Students {
     private String sex;
     private String academy;
     private String major;
-    private int grade;
+    private String grade;
     private  String state;
 }

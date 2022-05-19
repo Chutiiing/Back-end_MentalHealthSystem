@@ -21,6 +21,8 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    ////////////////////////////////教师端////////////////////////////////////
+
     //查询全部数据
     @GetMapping
     public List<Students> findAll() {
@@ -78,7 +80,7 @@ public class StudentController {
     //"RequestBody"可以把前端传来的jason数据转换成java对象
     @PostMapping("/insert")
     public Integer insert(@RequestBody Students students) {
-        return studentsMapper.insert(students);
+            return studentsMapper.insert(students);
     }
 
     //更新某一行
@@ -122,5 +124,14 @@ public class StudentController {
         res.put("total",total);
         res.put("data",data);
         return res;
+    }
+
+    /////////////////////////////////学生端////////////////////////////////////
+
+    //登录
+    @PostMapping("/login")
+    public boolean login(@RequestBody Students students){
+        System.out.println("是否对："+ studentService.login(students));
+        return studentService.login(students);
     }
 }

@@ -39,7 +39,7 @@ public interface BookingMapper extends BaseMapper<Booking> {
 
     /////////////////学生端/////////////////////////////
     //学生端查询预约信息
-    @Select("select teacher.username,booking.time,teacher.introduction,teacher.phone,teacher.room from booking,teacher " +
+    @Select("select booking.id, teacher.username,booking.time,teacher.introduction,teacher.phone,teacher.room from booking,teacher " +
             "where booking.tno = teacher.tno and booking.isbooking = \"未预约\"")
     List<StuBooking> findBooking();
 }
