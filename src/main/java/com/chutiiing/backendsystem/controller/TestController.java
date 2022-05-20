@@ -86,8 +86,6 @@ public class TestController {
         //获取量表id和简介
         test.setTableid(list.get(0).getTableid());
         test.setIntroduction(list.get(0).getIntroduction());
-        System.out.println("!!!!!!!");
-        System.out.println(test);
 
         //量表已经存在
         if(testService.testExists(test)){
@@ -119,6 +117,12 @@ public class TestController {
         }
         map.put("title", title);    //返回量表名称数组
         return map;
+    }
+
+    //查询问题列表
+    @GetMapping("/findContent/{tableid}")
+    public List<TestQuestion> findContent(@PathVariable String tableid){
+        return testMapper.findContent(tableid);
     }
 }
 

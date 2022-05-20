@@ -1,5 +1,6 @@
 package com.chutiiing.backendsystem.controller;
 
+import cn.hutool.core.date.DateUtil;
 import com.chutiiing.backendsystem.entity.Booking;
 import com.chutiiing.backendsystem.entity.StuBooking;
 import com.chutiiing.backendsystem.mapper.BookingMapper;
@@ -67,6 +68,26 @@ public class BookingController {
     //查询预约信息
     @GetMapping("/findBooking")
     public List<StuBooking> findBooking(){
-        return bookingMapper.findBooking();
+        //显示的可预约信息应该大于当前时间
+        String time = DateUtil.now();
+        return bookingMapper.findBooking(time);
+    }
+
+    //更新预约信息
+    @PostMapping("/updateBooking/{sno}/{id}")
+    public Boolean update(@PathVariable String sno, @PathVariable String id){
+        return bookingMapper.update(sno,id) == 1;
+    }
+
+    //查询学生已经预约的信息
+    @GetMapping("/findStuBooking/{sno}")
+    public List<StuBooking> findBooking(@PathVariable String sno){
+        return bookingMapper.findStuBooking(sno);
+    }
+
+    //取消预约
+    @PostMapping("/delBooking/{id}")
+    public Boolean delBooking(@PathVariable String id){
+        return bookingMapper.delBooking(id) == 1;
     }
 }

@@ -40,6 +40,19 @@ public interface BookingMapper extends BaseMapper<Booking> {
     /////////////////学生端/////////////////////////////
     //学生端查询预约信息
     @Select("select booking.id, teacher.username,booking.time,teacher.introduction,teacher.phone,teacher.room from booking,teacher " +
-            "where booking.tno = teacher.tno and booking.isbooking = \"未预约\"")
-    List<StuBooking> findBooking();
+            "where booking.tno = teacher.tno and booking.isbooking = \"未预约\" and booking.time > #{time}")
+    List<StuBooking> findBooking(String time);
+
+    //更新预约信息为预约
+    @Update("update booking set sno = #{sno}, isBooking = '已预约' where id = #{id}")
+    Integer update(String sno,String id);
+
+    //学生端查询预约记录
+    @Select("select booking.id, teacher.username,booking.time,teacher.introduction,teacher.phone,teacher.room from booking,teacher " +
+            "where booking.tno = teacher.tno and booking.sno = #{sno}")
+    List<StuBooking> findStuBooking(String sno);
+
+    //取消预约
+    @Update("update booking set sno = null, isBooking = '未预约' where id = #{id}")
+    Integer delBooking(String id);
 }

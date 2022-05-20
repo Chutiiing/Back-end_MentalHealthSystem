@@ -3,6 +3,7 @@ package com.chutiiing.backendsystem.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.chutiiing.backendsystem.entity.Test;
 import com.chutiiing.backendsystem.entity.TestName;
+import com.chutiiing.backendsystem.entity.TestQuestion;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -37,5 +38,9 @@ public interface TestMapper extends BaseMapper<Test> {
     //查询
     @Select("select * from test_name")
     List<Test> findAll();
+
+    //查询问题
+    @Select("select id, content, flag from test where tableid = #{tableid}")
+    List<TestQuestion> findContent(String tableid);
 
 }
