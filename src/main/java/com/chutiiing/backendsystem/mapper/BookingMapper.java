@@ -14,7 +14,7 @@ public interface BookingMapper extends BaseMapper<Booking> {
 
     //分页查询
     @Select("select booking.id,booking.time,booking.sno,booking.isbooking,booking.tno,teacher.room from booking,teacher " +
-            "where booking.isbooking like #{isbooking} and booking.tno = #{tno} and booking.tno = teacher.tno limit #{pageNum}, #{pageSize}")
+            "where booking.isbooking like #{isbooking} and booking.tno = #{tno} and booking.tno = teacher.tno  limit #{pageNum}, #{pageSize}")
     List<Booking> selectPage(Integer pageNum, Integer pageSize, String isbooking, String tno);
 
     //查询总条数
