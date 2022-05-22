@@ -30,7 +30,7 @@ public interface TestMapper extends BaseMapper<Test> {
     int insert(Test test);
 
     //查询已有的量表title
-    @Select("select title from test_name")
+    @Select("select title from test_name order by tableid")
     List<TestName> findName();
 
     //////////////////////////////////学生端/////////////////////////////////

@@ -134,4 +134,10 @@ public class StudentController {
         System.out.println("是否对："+ studentService.login(students));
         return studentService.login(students);
     }
+
+    //更新学生状态
+    @PostMapping("/updateState")
+    public boolean updateState(@RequestBody Students students){
+        return studentsMapper.updateState(students) == 1;
+    }
 }

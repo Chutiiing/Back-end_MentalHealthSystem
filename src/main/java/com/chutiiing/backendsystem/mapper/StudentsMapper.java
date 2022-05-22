@@ -58,4 +58,8 @@ public interface StudentsMapper extends BaseMapper<Students> {
     @Delete("delete from students where sno = #{sno}")
     Integer deleteBySno(@Param("sno") String sno);
 
+    //更新状态
+    @Update("update students set state = #{state} where sno = #{sno}")
+    Integer updateState(Students students);
+
 }

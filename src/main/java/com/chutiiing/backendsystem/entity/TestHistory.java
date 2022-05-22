@@ -10,7 +10,7 @@ public class TestHistory {
     @TableId
     private Integer id;
     private String sno;
-    private String title;
+    private String tableid;
     private String result;
     private String date;
 }
